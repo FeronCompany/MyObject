@@ -34,5 +34,7 @@ void State::init()
 
 REG_TYPE(state)
 {
-	return new State;
+	State* object = new State;
+	object->init();
+	return object;
 }

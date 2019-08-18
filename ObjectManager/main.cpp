@@ -1,11 +1,13 @@
 
 
-#include "types/BaseObject.h"
+#include "types/ObjectManager.h"
+#include "tools/BaseLogger.h"
 
 int main()
 {
-	BaseObject* object = BaseFactoty::instance().create("state");
-	object->init();
-	delete object;
+	ObjectManager& inst = ObjectManager::instance();
+	std::string id = inst.create("state");
+	Logger::instance().log(id);
+	inst.remove(id);
 	return 0;
 }

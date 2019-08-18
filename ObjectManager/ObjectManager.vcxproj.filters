@@ -10,9 +10,16 @@
     <ClInclude Include="types\BaseObject.h" />
     <ClInclude Include="types\State.h" />
     <ClInclude Include="tools\BaseLogger.h" />
+    <ClInclude Include="types\ObjectManager.h" />
+    <ClInclude Include="tools\IdCreator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="types\State.cpp" />
+    <ClCompile Include="tools\IdCreator.cpp" />
+    <ClCompile Include="types\ObjectManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="README.txt" />
   </ItemGroup>
 </Project>
