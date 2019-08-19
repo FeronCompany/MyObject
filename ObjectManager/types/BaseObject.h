@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <string>
 #include "../tools/TypeRegSingleton.h"
 
 class BaseObject
@@ -16,10 +17,11 @@ public:
 	BaseObject() {}
 	virtual ~BaseObject() {}
 	virtual void init() = 0;
+	virtual void setNo(const std::string& serialNo) = 0;
 };
 
 typedef BaseObject* (*__objectGetter)();
-typedef FormatFactory<__objectGetter, BaseObject> BaseFactoty;
+typedef CommSingleton<FormatFactory<__objectGetter, BaseObject>> BaseFactoty;
 typedef TypeRegCaller<__objectGetter, BaseObject> BaseRegCaller;
 
 #define REG_TYPE(__cb_func) \

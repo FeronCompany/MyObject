@@ -10,18 +10,20 @@
 #include <string>
 #include <cstdlib>
 #include <cstring>
+#include <map>
+#include "CommSingleton.h"
 
 class IdCreator
 {
+	friend CommSingleton<IdCreator>;
 public:
-	static IdCreator& instance()
-	{
-		static IdCreator inst;
-		return inst;
-	}
-
 	std::string getId(const std::string& type);
 
 private:
 	IdCreator();
+
+private:
+	std::map<std::string, int32_t> mSerialNoMap;
 };
+
+typedef CommSingleton<IdCreator> IdUtil;

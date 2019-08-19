@@ -32,7 +32,8 @@ std::string ObjectManager::create(const std::string& name)
 		Logger::instance().log("create object faild");
 		return "";
 	}
-	std::string id = IdCreator::instance().getId(name);
+	std::string id = IdUtil::instance().getId(name);
+	object->setNo(id);
 	mObjectTree[name][id] = object;
 
 	return id;

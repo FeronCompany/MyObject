@@ -10,18 +10,14 @@
 
 #include <string>
 #include <map>
+#include "CommSingleton.h"
 
 
 template<class CbFunc, class BaseClass>
 class FormatFactory
 {
+	friend CommSingleton<FormatFactory>;
 public:
-	static FormatFactory& instance()
-	{
-		static FormatFactory inst;
-		return inst;
-	}
-
 	BaseClass* create(const std::string& className)
 	{
 		auto iter = cbFuncMap.find(className);
@@ -53,6 +49,6 @@ class TypeRegCaller
 public:
 	TypeRegCaller(const std::string& className, CbFunc __cb)
 	{
-		FormatFactory<CbFunc, BaseClass>::instance().join(className, __cb);
+		CommSingleton<FormatFactory<CbFunc, BaseClass>>::instance().join(className, __cb);
 	}
 };

@@ -10,8 +10,7 @@
 
 #include <iostream>
 #include <string>
-
-class Logger;
+#include "CommSingleton.h"
 
 class BaseLogger
 {
@@ -21,7 +20,7 @@ public:
 
 class TerminalLogger : public BaseLogger
 {
-	friend Logger;
+	friend CommSingleton<TerminalLogger>;
 public:
 	void log(const std::string& content) override
 	{
@@ -34,7 +33,7 @@ private:
 
 class FileLogger : public BaseLogger
 {
-	friend Logger;
+	friend CommSingleton<TerminalLogger>;
 public:
 	void log(const std::string& content) override {}
 
@@ -42,16 +41,4 @@ private:
 	FileLogger() {}
 };
 
-class Logger
-{
-public:
-	static BaseLogger& instance()
-	{
-		static TerminalLogger logger;
-		return logger;
-	}
-
-private:
-	Logger() {}
-
-};
+typedef CommSingleton<TerminalLogger> Logger;

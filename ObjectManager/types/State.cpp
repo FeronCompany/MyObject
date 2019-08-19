@@ -32,6 +32,11 @@ void State::init()
 	Logger::instance().log("State::init()");
 }
 
+void State::setNo(const std::string& no)
+{
+	mStateInfo->mID = no;
+}
+
 REG_TYPE(state)
 {
 	State* object = new State;

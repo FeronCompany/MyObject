@@ -12,12 +12,15 @@
     <ClInclude Include="tools\BaseLogger.h" />
     <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="tools\IdCreator.h" />
+    <ClInclude Include="tools\CommSingleton.h" />
+    <ClInclude Include="types\Character.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="types\State.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
     <ClCompile Include="types\ObjectManager.cpp" />
+    <ClCompile Include="types\Character.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

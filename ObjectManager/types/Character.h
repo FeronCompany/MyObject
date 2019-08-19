@@ -4,22 +4,22 @@
 
 #include "BaseObject.h"
 
-struct StateData
+struct CharaData
 {
 	std::string mID;
 	std::string mName;
 
 };
 
-class State : public BaseObject
+class Character : public BaseObject
 {
 public:
-	State();
-	State(State&& instance);
-	~State();
+	Character();
+	Character(Character&& instance);
+	~Character();
 	void init() override;
 	void setNo(const std::string& no) override;
 
 private:
-	StateData* mStateInfo;
+	CharaData* mCharaInfo;
 };
