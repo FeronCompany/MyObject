@@ -1,7 +1,7 @@
 
 
 #include "State.h"
-#include "../tools/BaseLogger.h"
+#include "BaseLogger.h"
 
 State::State()
 {
@@ -29,7 +29,7 @@ State::~State()
 
 void State::init()
 {
-	Logger::instance().log("State::init()");
+	COMM_LOG("state");;
 }
 
 void State::setNo(const std::string& no)

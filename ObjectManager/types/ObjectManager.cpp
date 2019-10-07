@@ -2,7 +2,7 @@
 
 #include "ObjectManager.h"
 #include "../tools/IdCreator.h"
-#include "../tools/BaseLogger.h"
+#include "BaseLogger.h"
 
 ObjectManager::~ObjectManager()
 {

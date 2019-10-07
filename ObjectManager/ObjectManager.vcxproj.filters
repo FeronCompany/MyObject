@@ -7,13 +7,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tools\TypeRegSingleton.h" />
-    <ClInclude Include="types\BaseObject.h" />
     <ClInclude Include="types\State.h" />
-    <ClInclude Include="tools\BaseLogger.h" />
     <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="tools\IdCreator.h" />
-    <ClInclude Include="tools\CommSingleton.h" />
     <ClInclude Include="types\Character.h" />
+    <ClInclude Include="include\BaseLogger.h" />
+    <ClInclude Include="include\CommSingleton.h" />
+    <ClInclude Include="include\BaseObject.h" />
+    <ClInclude Include="include\StrFormat.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -21,6 +22,8 @@
     <ClCompile Include="tools\IdCreator.cpp" />
     <ClCompile Include="types\ObjectManager.cpp" />
     <ClCompile Include="types\Character.cpp" />
+    <ClCompile Include="commsrc\BaseLogger.cpp" />
+    <ClCompile Include="commsrc\StrFormat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -123,16 +125,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="tools\BaseLogger.h" />
-    <ClInclude Include="tools\CommSingleton.h" />
+    <ClInclude Include="include\BaseLogger.h" />
+    <ClInclude Include="include\CommSingleton.h" />
+    <ClInclude Include="include\StrFormat.h" />
     <ClInclude Include="tools\IdCreator.h" />
     <ClInclude Include="tools\TypeRegSingleton.h" />
-    <ClInclude Include="types\BaseObject.h" />
+    <ClInclude Include="include\BaseObject.h" />
     <ClInclude Include="types\Character.h" />
     <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="types\State.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="commsrc\BaseLogger.cpp" />
+    <ClCompile Include="commsrc\StrFormat.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
     <ClCompile Include="types\Character.cpp" />

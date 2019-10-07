@@ -18,6 +18,7 @@ std::string IdCreator::getId(const std::string& type)
 	else
 	{
 		count = iter->second + 1;
+		iter->second = count;
 	}
 	char buf[30] = { 0 };
 	snprintf(buf, sizeof(buf), "%s%07d", type.c_str(), count);

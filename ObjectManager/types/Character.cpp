@@ -1,7 +1,7 @@
 
 
 #include "Character.h"
-#include "../tools/BaseLogger.h"
+#include "BaseLogger.h"
 
 Character::Character()
 {
@@ -29,7 +29,7 @@ Character::~Character()
 
 void Character::init()
 {
-	Logger::instance().log("State::init()");
+	COMM_LOG("character");
 }
 
 void Character::setNo(const std::string& no)
