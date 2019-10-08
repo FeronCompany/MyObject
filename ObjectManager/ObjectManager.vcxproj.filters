@@ -6,7 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tools\TypeRegSingleton.h" />
     <ClInclude Include="types\State.h" />
     <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="tools\IdCreator.h" />
@@ -15,6 +14,9 @@
     <ClInclude Include="include\CommSingleton.h" />
     <ClInclude Include="include\BaseObject.h" />
     <ClInclude Include="include\StrFormat.h" />
+    <ClInclude Include="include\TypeRegSingleton.h" />
+    <ClInclude Include="tools\Configure.h" />
+    <ClInclude Include="tools\CharaTrait.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -24,6 +26,8 @@
     <ClCompile Include="types\Character.cpp" />
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
+    <ClCompile Include="tools\Configure.cpp" />
+    <ClCompile Include="tools\CharaTrait.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

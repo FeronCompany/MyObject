@@ -5,7 +5,7 @@
 
 State::State()
 {
-	mStateInfo = new StateData;
+	mStateInfo = SafeNew<StateData>();
 }
 
 State::State(State&& instance)
@@ -17,7 +17,7 @@ State::State(State&& instance)
 	}
 	else
 	{
-		mStateInfo = new StateData;
+		mStateInfo = SafeNew<StateData>();
 	}
 }
 
@@ -39,7 +39,7 @@ void State::setNo(const std::string& no)
 
 REG_TYPE(state)
 {
-	State* object = new State;
+	State* object = SafeNew<State>();
 	object->init();
 	return object;
 }

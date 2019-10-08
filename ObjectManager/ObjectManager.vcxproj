@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
+    <IncludePath>G:\vs_proj\MyObject\ObjectManager\tools;G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -125,11 +125,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="tools\CharaTrait.h" />
+    <ClInclude Include="tools\Configure.h" />
     <ClInclude Include="include\BaseLogger.h" />
     <ClInclude Include="include\CommSingleton.h" />
     <ClInclude Include="include\StrFormat.h" />
     <ClInclude Include="tools\IdCreator.h" />
-    <ClInclude Include="tools\TypeRegSingleton.h" />
+    <ClInclude Include="include\TypeRegSingleton.h" />
     <ClInclude Include="include\BaseObject.h" />
     <ClInclude Include="types\Character.h" />
     <ClInclude Include="types\ObjectManager.h" />
@@ -138,6 +140,8 @@
   <ItemGroup>
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
+    <ClCompile Include="tools\CharaTrait.cpp" />
+    <ClCompile Include="tools\Configure.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
     <ClCompile Include="types\Character.cpp" />

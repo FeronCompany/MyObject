@@ -3,13 +3,7 @@
 #pragma once
 
 #include "BaseObject.h"
-
-struct CharaData
-{
-	std::string mID;
-	std::string mName;
-
-};
+#include "CharaTrait.h"
 
 class Character : public BaseObject
 {
@@ -21,5 +15,6 @@ public:
 	void setNo(const std::string& no) override;
 
 private:
-	CharaData* mCharaInfo;
+	CharaAttr* mCharaInfo;
+	std::vector<CharaTrait> mTraitList;
 };

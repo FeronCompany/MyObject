@@ -9,7 +9,7 @@
 #pragma once
 
 #include <string>
-#include "../tools/TypeRegSingleton.h"
+#include "TypeRegSingleton.h"
 
 class BaseObject
 {
@@ -28,3 +28,18 @@ typedef TypeRegCaller<__objectGetter, BaseObject> BaseRegCaller;
 BaseObject* __cb_func(); \
 BaseRegCaller caller##__cb_func(#__cb_func, __cb_func); \
 BaseObject* __cb_func()
+
+template <typename T>
+T* SafeNew()
+{
+	T* ptr = nullptr;
+	try
+	{
+		ptr = new T;
+	}
+	catch (...)
+	{
+		///Do nothing for now ...
+	}
+	return ptr;
+}

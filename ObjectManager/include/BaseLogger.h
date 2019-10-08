@@ -43,5 +43,5 @@ void CommLogFunc(const Args& ... args)
 	Logger::instance().log(ssLog.str());
 }
 
-#define COMM_LOG(fmt, ...) do { CommLogFunc(__FILE__, __LINE__, ObjectTools::FormatString(fmt, ##__VA_ARGS__)); } while(0)
+#define COMM_LOG(fmt, ...) do { Logger::instance().log(ObjectTools::FormatString(fmt"<%s|%d>", ##__VA_ARGS__, __FILE__, __LINE__)); } while(0)
 

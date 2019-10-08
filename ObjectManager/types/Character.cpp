@@ -5,7 +5,7 @@
 
 Character::Character()
 {
-	mCharaInfo = new CharaData;
+	mCharaInfo = SafeNew<CharaAttr>();
 }
 
 Character::Character(Character&& instance)
@@ -17,7 +17,7 @@ Character::Character(Character&& instance)
 	}
 	else
 	{
-		mCharaInfo = new CharaData;
+		mCharaInfo = SafeNew<CharaAttr>();
 	}
 }
 
@@ -39,7 +39,7 @@ void Character::setNo(const std::string& no)
 
 REG_TYPE(chara)
 {
-	Character* object = new Character;
+	Character* object = SafeNew<Character>();
 	object->init();
 	return object;
 }
