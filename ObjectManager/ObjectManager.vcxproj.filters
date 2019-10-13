@@ -17,6 +17,7 @@
     <ClInclude Include="include\TypeRegSingleton.h" />
     <ClInclude Include="tools\Configure.h" />
     <ClInclude Include="tools\CharaTrait.h" />
+    <ClInclude Include="tools\MemberFuncRegister.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -28,6 +29,7 @@
     <ClCompile Include="commsrc\StrFormat.cpp" />
     <ClCompile Include="tools\Configure.cpp" />
     <ClCompile Include="tools\CharaTrait.cpp" />
+    <ClCompile Include="tools\MemberFuncRegister.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

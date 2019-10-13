@@ -2,8 +2,43 @@
 
 #include "types/ObjectManager.h"
 #include "BaseLogger.h"
+#include "MemberFuncRegister.h"
 
-int main()
+class TestRegFunc
+{
+public:
+	TestRegFunc() :health(0) {}
+	DECLARE_MEMBER_FUNC(TestRegFunc, healthMod);
+
+	void tell()
+	{
+		//std::cout << "health[" << health << "]\n";
+		COMM_LOG("health[%d]", health);
+	}
+
+private:
+	int32_t health;
+};
+
+void TestRegFunc::healthMod(int num)
+{
+	this->health += num;
+}
+
+REG_MEMBER_FUNC(TestRegFunc, healthMod);
+
+typedef void (*member_func)(TestRegFunc*, int);
+
+void testRegFunc()
+{
+	TestRegFunc aaa;
+	aaa.tell();
+	void* func = RegfuncManager::instance().getFunc("healthMod");
+	static_cast<member_func>(func)(&aaa, 5);
+	aaa.tell();
+}
+
+void testObjectManager()
 {
 	Logger::instance().redirect("haha.log");
 	ObjectManager& inst = ObjectManager::instance();
@@ -19,5 +54,10 @@ int main()
 	inst.remove(id2);
 	inst.remove(id3);
 	inst.remove(id4);
+}
+
+int main()
+{
+	testRegFunc();
 	return 0;
 }
