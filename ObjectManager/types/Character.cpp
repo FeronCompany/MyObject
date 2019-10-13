@@ -32,11 +32,6 @@ void Character::init()
 	COMM_LOG("character");
 }
 
-void Character::setNo(const std::string& no)
-{
-	mCharaInfo->mID = no;
-}
-
 REG_TYPE(chara)
 {
 	Character* object = SafeNew<Character>();

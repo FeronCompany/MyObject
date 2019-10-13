@@ -5,36 +5,36 @@
 
 State::State()
 {
-	mStateInfo = SafeNew<StateData>();
+	population = 0;
 }
 
-State::State(State&& instance)
+State::State(const State& state)
 {
-	if (instance.mStateInfo)
-	{
-		this->mStateInfo = instance.mStateInfo;
-		instance.mStateInfo = nullptr;
-	}
-	else
-	{
-		mStateInfo = SafeNew<StateData>();
-	}
+	this->population = state.population;
+}
+
+State& State::operator=(const State& state)
+{
+	this->population = state.population;
+	return *this;
 }
 
 State::~State()
 {
-	if (mStateInfo)
-		delete mStateInfo;
 }
 
 void State::init()
 {
-	COMM_LOG("state");;
+	REG_MEMBER_FUNC_LITE(State, population);
 }
 
-void State::setNo(const std::string& no)
+void State::modpopulation(int num)
 {
-	mStateInfo->mID = no;
+	this->population += num;
+	if (this->population < 0)
+	{
+		this->population = 0;
+	}
 }
 
 REG_TYPE(state)

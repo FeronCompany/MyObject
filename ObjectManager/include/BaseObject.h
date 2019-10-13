@@ -17,7 +17,15 @@ public:
 	BaseObject() {}
 	virtual ~BaseObject() {}
 	virtual void init() = 0;
-	virtual void setNo(const std::string& serialNo) = 0;
+	
+	void setNo(const std::string& serialNo) { mID = serialNo; }
+	std::string getNo() { return mID; }
+	void setName(const std::string& name) { mName = name; }
+	std::string getName() { return mName; }
+
+private:
+	std::string mID;
+	std::string mName;
 };
 
 typedef BaseObject* (*__objectGetter)();

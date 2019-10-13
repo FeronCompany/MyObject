@@ -12,7 +12,6 @@ public:
 	Character(Character&& instance);
 	~Character();
 	void init() override;
-	void setNo(const std::string& no) override;
 
 private:
 	CharaAttr* mCharaInfo;

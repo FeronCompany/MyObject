@@ -3,23 +3,20 @@
 #pragma once
 
 #include "BaseObject.h"
-
-struct StateData
-{
-	std::string mID;
-	std::string mName;
-
-};
+#include "MemberFuncRegister.h"
 
 class State : public BaseObject
 {
 public:
 	State();
-	State(State&& instance);
+	State(const State& state);
 	~State();
+	State& operator=(const State& state);
 	void init() override;
-	void setNo(const std::string& no) override;
+
+	// getters and setters
+	DECLARE_MOD_AND_GET(State, population, int32_t);
 
 private:
-	StateData* mStateInfo;
+	int32_t population;
 };

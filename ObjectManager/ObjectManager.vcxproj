@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\vs_proj\MyObject\ObjectManager\tools;G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
+    <IncludePath>G:\vs_proj\MyObject\ObjectManager\types;G:\vs_proj\MyObject\ObjectManager\tools;G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,6 +134,7 @@
     <ClInclude Include="include\TypeRegSingleton.h" />
     <ClInclude Include="include\BaseObject.h" />
     <ClInclude Include="tools\MemberFuncRegister.h" />
+    <ClInclude Include="tools\StateManager.h" />
     <ClInclude Include="types\Character.h" />
     <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="types\State.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
     <ClCompile Include="tools\MemberFuncRegister.cpp" />
+    <ClCompile Include="tools\StateManager.cpp" />
     <ClCompile Include="types\Character.cpp" />
     <ClCompile Include="types\ObjectManager.cpp" />
     <ClCompile Include="types\State.cpp" />
