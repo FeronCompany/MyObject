@@ -2,11 +2,12 @@
 
 #include "CharaTrait.h"
 
-void CharaTrait::calcu(CharaAttr* inputAttr, CharaAttr* attrModify)
+void CharaTrait::addEffect(const CharaTraitEffect& trait)
 {
-	for (auto& item : mEffectList)
-	{
-		if(item.mCbFunc)
-			item.mCbFunc(inputAttr, attrModify);
-	}
+	mEffectList.push_back(trait);
+}
+
+const std::vector<CharaTraitEffect>& CharaTrait::getAllEffect()
+{
+	return mEffectList;
 }
