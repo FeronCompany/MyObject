@@ -5,31 +5,21 @@
 #include <string>
 #include <vector>
 
-// basic attribute of characters
-struct CharaAttr
-{
-	std::string mID;
-	std::string mName;
-
-};
-
-typedef void (*CbAttrChange)(CharaAttr* input, CharaAttr* modify);
-
 struct CharaTraitEffect
 {
 	std::string mEffectName;
 	std::string mEffectDesc;
-	CbAttrChange mCbFunc;
+	std::string mEffectFuncName;
 };
 // trait of characters
-struct CharaTrait
+class CharaTrait
 {
-	std::string mTraitName;
-	std::string mTraitDesc;
-
-	void calcu(CharaAttr* inputAttr, CharaAttr* attrModify);
+public:
+	void addEffect(const CharaTraitEffect& trait);
+	const std::vector<CharaTraitEffect>& getAllEffect();
 
 private:
+	std::string mTraitName;
+	std::string mTraitDesc;
 	std::vector<CharaTraitEffect> mEffectList;
 };
-
