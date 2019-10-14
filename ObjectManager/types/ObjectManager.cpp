@@ -18,12 +18,6 @@ ObjectManager::~ObjectManager()
 	}
 }
 
-ObjectManager& ObjectManager::instance()
-{
-	static ObjectManager inst;
-	return inst;
-}
-
 std::string ObjectManager::create(const std::string& name)
 {
 	BaseObject* object = BaseFactoty::instance().create(name);
@@ -41,12 +35,10 @@ std::string ObjectManager::create(const std::string& name)
 
 void ObjectManager::remove(const std::string& id)
 {
-	if (id.length() < 8)
+	if (!checkNo(id))
 	{
-		Logger::instance().log("id is illegal!");
 		return;
 	}
-
 	// 去掉id的后七位便是类型type
 	std::string type = id.substr(0, id.length() - 7);
 	BaseObject* object = mObjectTree[type][id];
@@ -56,4 +48,26 @@ void ObjectManager::remove(const std::string& id)
 		mObjectTree[type].erase(id);
 	}
 	
+}
+
+BaseObject* ObjectManager::refer(const std::string& id)
+{
+	if (!checkNo(id))
+	{
+		return nullptr;
+	}
+	std::string type = id.substr(0, id.length() - 7);
+	BaseObject* object = mObjectTree[type][id];
+	return object;
+}
+
+bool ObjectManager::checkNo(const std::string& id)
+{
+	if (id.length() < 8)
+	{
+		Logger::instance().log("id is illegal!");
+		return false;
+	}
+
+	return true;
 }

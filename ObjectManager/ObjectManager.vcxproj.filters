@@ -16,9 +16,10 @@
     <ClInclude Include="include\StrFormat.h" />
     <ClInclude Include="include\TypeRegSingleton.h" />
     <ClInclude Include="tools\Configure.h" />
-    <ClInclude Include="tools\CharaTrait.h" />
     <ClInclude Include="tools\MemberFuncRegister.h" />
     <ClInclude Include="tools\StateManager.h" />
+    <ClInclude Include="tools\Trait.h" />
+    <ClInclude Include="tools\CrudePointer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -29,9 +30,9 @@
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
     <ClCompile Include="tools\Configure.cpp" />
-    <ClCompile Include="tools\CharaTrait.cpp" />
     <ClCompile Include="tools\MemberFuncRegister.cpp" />
     <ClCompile Include="tools\StateManager.cpp" />
+    <ClCompile Include="tools\Trait.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

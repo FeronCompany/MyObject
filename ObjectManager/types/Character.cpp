@@ -5,26 +5,12 @@
 
 Character::Character()
 {
-	mCharaInfo = SafeNew<CharaAttr>();
-}
-
-Character::Character(Character&& instance)
-{
-	if (instance.mCharaInfo)
-	{
-		this->mCharaInfo = instance.mCharaInfo;
-		instance.mCharaInfo = nullptr;
-	}
-	else
-	{
-		mCharaInfo = SafeNew<CharaAttr>();
-	}
+	
 }
 
 Character::~Character()
 {
-	if (mCharaInfo)
-		delete mCharaInfo;
+	
 }
 
 void Character::init()

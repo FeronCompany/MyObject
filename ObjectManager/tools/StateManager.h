@@ -24,5 +24,3 @@ private:
 };
 
 typedef CommSingleton<StateManager> CStateManager;
-
-typedef void (*__stateActionFunc)(State*, int);

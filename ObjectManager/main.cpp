@@ -4,52 +4,18 @@
 #include "StateManager.h"
 #include "BaseLogger.h"
 #include "MemberFuncRegister.h"
-
-class TestRegFunc
-{
-public:
-	TestRegFunc() :health(0) {}
-	DECLARE_MOD_AND_GET(TestRegFunc, health, int32_t);
-
-	void init()
-	{
-		REG_MEMBER_FUNC_LITE(TestRegFunc, health);
-	}
-
-private:
-	int32_t health;
-};
-
-void TestRegFunc::modhealth(int num)
-{
-	this->health += num;
-}
-
-typedef void (*member_func)(TestRegFunc*, int);
-
-void testRegFunc()
-{
-	TestRegFunc aaa;
-	aaa.init();
-	COMM_LOG("health[%d]", aaa.gethealth());
-	void* func = RegfuncManager::instance().getFunc("modhealth");
-	if (!func)
-	{
-		COMM_LOG("func pointer is null");
-	}
-	else
-	{
-		static_cast<member_func>(func)(&aaa, 5);
-		COMM_LOG("health[%d]", aaa.gethealth());
-	}
-}
+#include "CrudePointer.h"
+#include "Character.h"
 
 void testObjectManager()
 {
 	Logger::instance().redirect("haha.log");
-	ObjectManager& inst = ObjectManager::instance();
+	ObjectManager& inst = CObjectManager::instance();
 	std::string id1 = inst.create("state");
 	COMM_LOG("new object[%s]", id1.c_str());
+	State* myState = static_cast<State*>(inst.refer(id1));
+	myState->modpopulation(1000);
+	COMM_LOG("pop[%d]", myState->getpopulation());
 	inst.remove(id1);
 }
 
@@ -79,10 +45,21 @@ void testStateManager()
 	inst.remove(id1);
 }
 
+void testCrudePointer()
+{
+	/*State* myState = new State;
+	CrudePointer<State> state(myState);
+	(*state).init();
+	COMM_LOG("%d", (*state).getpopulation());
+	delete myState;*/
+	CrudePointer<Character> state(NULL);
+}
+
 int main()
 {
 	//testRegFunc();
-	//testObjectManager();
-	testStateManager();
+	testObjectManager();
+	//testStateManager();
+	//testCrudePointer();
 	return 0;
 }
