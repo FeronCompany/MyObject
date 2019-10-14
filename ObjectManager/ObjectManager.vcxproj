@@ -125,7 +125,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="tools\CharaTrait.h" />
+    <ClInclude Include="tools\CrudePointer.h" />
+    <ClInclude Include="tools\Trait.h" />
     <ClInclude Include="tools\Configure.h" />
     <ClInclude Include="include\BaseLogger.h" />
     <ClInclude Include="include\CommSingleton.h" />
@@ -142,7 +143,7 @@
   <ItemGroup>
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
-    <ClCompile Include="tools\CharaTrait.cpp" />
+    <ClCompile Include="tools\Trait.cpp" />
     <ClCompile Include="tools\Configure.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
