@@ -78,6 +78,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <UndefinePreprocessorDefinitions>%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,7 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="tools\ComposedLog.h" />
     <ClInclude Include="tools\CrudePointer.h" />
+    <ClInclude Include="tools\MyTime.h" />
     <ClInclude Include="tools\Trait.h" />
     <ClInclude Include="tools\Configure.h" />
     <ClInclude Include="include\BaseLogger.h" />
@@ -135,7 +139,6 @@
     <ClInclude Include="include\TypeRegSingleton.h" />
     <ClInclude Include="include\BaseObject.h" />
     <ClInclude Include="tools\MemberFuncRegister.h" />
-    <ClInclude Include="tools\StateManager.h" />
     <ClInclude Include="types\Character.h" />
     <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="types\State.h" />
@@ -143,12 +146,12 @@
   <ItemGroup>
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
+    <ClCompile Include="tools\MyTime.cpp" />
     <ClCompile Include="tools\Trait.cpp" />
     <ClCompile Include="tools\Configure.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
     <ClCompile Include="tools\MemberFuncRegister.cpp" />
-    <ClCompile Include="tools\StateManager.cpp" />
     <ClCompile Include="types\Character.cpp" />
     <ClCompile Include="types\ObjectManager.cpp" />
     <ClCompile Include="types\State.cpp" />

@@ -17,9 +17,10 @@
     <ClInclude Include="include\TypeRegSingleton.h" />
     <ClInclude Include="tools\Configure.h" />
     <ClInclude Include="tools\MemberFuncRegister.h" />
-    <ClInclude Include="tools\StateManager.h" />
     <ClInclude Include="tools\Trait.h" />
     <ClInclude Include="tools\CrudePointer.h" />
+    <ClInclude Include="tools\MyTime.h" />
+    <ClInclude Include="tools\ComposedLog.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -31,8 +32,8 @@
     <ClCompile Include="commsrc\StrFormat.cpp" />
     <ClCompile Include="tools\Configure.cpp" />
     <ClCompile Include="tools\MemberFuncRegister.cpp" />
-    <ClCompile Include="tools\StateManager.cpp" />
     <ClCompile Include="tools\Trait.cpp" />
+    <ClCompile Include="tools\MyTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />
