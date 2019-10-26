@@ -1,65 +1,42 @@
 
 
 #include "ObjectManager.h"
-#include "StateManager.h"
-#include "BaseLogger.h"
+#include "State.h"
+#include "ComposedLog.h"
 #include "MemberFuncRegister.h"
-#include "CrudePointer.h"
 #include "Character.h"
+#include "ActionController.h"
 
 void testObjectManager()
 {
 	Logger::instance().redirect("haha.log");
 	ObjectManager& inst = CObjectManager::instance();
 	std::string id1 = inst.create("state");
-	COMM_LOG("new object[%s]", id1.c_str());
+	RECORD_LOG("new object[%s]", id1.c_str());
 	State* myState = static_cast<State*>(inst.refer(id1));
 	myState->modpopulation(1000);
-	COMM_LOG("pop[%d]", myState->getpopulation());
+	RECORD_LOG("pop[%d]", myState->getpopulation());
 	inst.remove(id1);
 }
 
-void testStateManager()
+void testAction()
 {
 	Logger::instance().redirect("haha.log");
-	StateManager& inst = CStateManager::instance();
+	ObjectManager& inst = CObjectManager::instance();
 	std::string id1 = inst.create("state");
-	COMM_LOG("new object[%s]", id1.c_str());
-
-	State state;
-	inst.refer(id1, state);
-	COMM_LOG("state population[%d]", state.getpopulation());
-
-	inst.command(id1, "modpopulation", 1500);
-	inst.refer(id1, state);
-	COMM_LOG("state population[%d]", state.getpopulation());
-
-	inst.command(id1, "modpopulation", -1200);
-	inst.refer(id1, state);
-	COMM_LOG("state population[%d]", state.getpopulation());
-
-	inst.command(id1, "modpopulation", -1200);
-	inst.refer(id1, state);
-	COMM_LOG("state population[%d]", state.getpopulation());
-
+	RECORD_LOG("new object[%s]", id1.c_str());
+	State* state = static_cast<State*>(inst.refer(id1));
+	CActionController::instance().perform(id1, "modpopulation", 100);
+	RECORD_LOG("current population[%d]", state->getpopulation());
+	CActionController::instance().perform(id1, "modpopulation", 100);
+	RECORD_LOG("current population[%d]", state->getpopulation());
 	inst.remove(id1);
-}
-
-void testCrudePointer()
-{
-	/*State* myState = new State;
-	CrudePointer<State> state(myState);
-	(*state).init();
-	COMM_LOG("%d", (*state).getpopulation());
-	delete myState;*/
-	CrudePointer<Character> state(NULL);
 }
 
 int main()
 {
 	//testRegFunc();
-	testObjectManager();
-	//testStateManager();
-	//testCrudePointer();
+	//testObjectManager();
+	testAction();
 	return 0;
 }
