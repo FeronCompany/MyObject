@@ -4,8 +4,8 @@
 #include "State.h"
 #include "ComposedLog.h"
 #include "MemberFuncRegister.h"
-#include "CrudePointer.h"
 #include "Character.h"
+#include "ActionController.h"
 
 void testObjectManager()
 {
@@ -19,20 +19,24 @@ void testObjectManager()
 	inst.remove(id1);
 }
 
-void testCrudePointer()
+void testAction()
 {
-	/*State* myState = new State;
-	CrudePointer<State> state(myState);
-	(*state).init();
-	COMM_LOG("%d", (*state).getpopulation());
-	delete myState;*/
-	CrudePointer<Character> state(NULL);
+	Logger::instance().redirect("haha.log");
+	ObjectManager& inst = CObjectManager::instance();
+	std::string id1 = inst.create("state");
+	RECORD_LOG("new object[%s]", id1.c_str());
+	State* state = static_cast<State*>(inst.refer(id1));
+	CActionController::instance().perform(id1, "modpopulation", 100);
+	RECORD_LOG("current population[%d]", state->getpopulation());
+	CActionController::instance().perform(id1, "modpopulation", 100);
+	RECORD_LOG("current population[%d]", state->getpopulation());
+	inst.remove(id1);
 }
 
 int main()
 {
 	//testRegFunc();
-	testObjectManager();
-	//testCrudePointer();
+	//testObjectManager();
+	testAction();
 	return 0;
 }

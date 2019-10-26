@@ -6,6 +6,7 @@
 #include <string>
 
 #include "CommSingleton.h"
+#include "BaseObject.h"
 
 class RegFuncManager
 {
@@ -31,9 +32,9 @@ public:
 
 #define DECLARE_MEMBER_FUNC(class_name, func_name) \
 	void func_name(int num); \
-	static void st_##func_name(class_name* obj, int num) \
+	static void st_##func_name(BaseObject* obj, int num) \
 	{ \
-		obj->func_name(num);\
+		static_cast<class_name*>(obj)->func_name(num);\
 	}
 
 #define REG_MEMBER_FUNC(class_name, func_name) \

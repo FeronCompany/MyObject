@@ -7,7 +7,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types\State.h" />
-    <ClInclude Include="types\ObjectManager.h" />
     <ClInclude Include="tools\IdCreator.h" />
     <ClInclude Include="types\Character.h" />
     <ClInclude Include="include\BaseLogger.h" />
@@ -21,12 +20,13 @@
     <ClInclude Include="tools\CrudePointer.h" />
     <ClInclude Include="tools\MyTime.h" />
     <ClInclude Include="tools\ComposedLog.h" />
+    <ClInclude Include="function\ActionController.h" />
+    <ClInclude Include="tools\ObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="types\State.cpp" />
     <ClCompile Include="tools\IdCreator.cpp" />
-    <ClCompile Include="types\ObjectManager.cpp" />
     <ClCompile Include="types\Character.cpp" />
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
@@ -34,6 +34,8 @@
     <ClCompile Include="tools\MemberFuncRegister.cpp" />
     <ClCompile Include="tools\Trait.cpp" />
     <ClCompile Include="tools\MyTime.cpp" />
+    <ClCompile Include="function\ActionController.cpp" />
+    <ClCompile Include="tools\ObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

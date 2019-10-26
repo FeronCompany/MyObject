@@ -18,7 +18,7 @@ public:
 
 	MyTimeSpan(int lDays, int nHours, int nMins, int nSecs)
 	{
-		m_timeSpan = nSecs + 60 * (nMins + 60 * (nHours + 24 * lDays));
+		m_timeSpan = (int64_t)nSecs + 60 * ((int64_t)nMins + 60 * ((int64_t)nHours + 24 * (int64_t)lDays));
 	}
 
 	int getDays() const {
