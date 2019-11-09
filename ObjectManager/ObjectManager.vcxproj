@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="function\ActionController.h" />
+    <ClInclude Include="include\EventBase.h" />
     <ClInclude Include="tools\ComposedLog.h" />
     <ClInclude Include="tools\CrudePointer.h" />
     <ClInclude Include="tools\MyTime.h" />
@@ -146,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="commsrc\BaseLogger.cpp" />
+    <ClCompile Include="commsrc\EventBase.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
     <ClCompile Include="function\ActionController.cpp" />
     <ClCompile Include="tools\MyTime.cpp" />

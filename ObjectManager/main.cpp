@@ -6,6 +6,7 @@
 #include "MemberFuncRegister.h"
 #include "Character.h"
 #include "ActionController.h"
+#include "EventBase.h"
 
 void testObjectManager()
 {
@@ -33,10 +34,17 @@ void testAction()
 	inst.remove(id1);
 }
 
+void testEvent()
+{
+	//Logger::instance().redirect("haha.log");
+	CEventLoop::instance().exec();
+}
+
 int main()
 {
 	//testRegFunc();
 	//testObjectManager();
-	testAction();
+	//testAction();
+	testEvent();
 	return 0;
 }

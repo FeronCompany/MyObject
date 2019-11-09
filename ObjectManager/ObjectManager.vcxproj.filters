@@ -22,6 +22,7 @@
     <ClInclude Include="tools\ComposedLog.h" />
     <ClInclude Include="function\ActionController.h" />
     <ClInclude Include="tools\ObjectManager.h" />
+    <ClInclude Include="include\EventBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="tools\MyTime.cpp" />
     <ClCompile Include="function\ActionController.cpp" />
     <ClCompile Include="tools\ObjectManager.cpp" />
+    <ClCompile Include="commsrc\EventBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />
