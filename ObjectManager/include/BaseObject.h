@@ -29,25 +29,4 @@ private:
 };
 
 typedef BaseObject* (*__objectGetter)();
-typedef CommSingleton<FormatFactory<__objectGetter, BaseObject>> BaseFactoty;
-typedef TypeRegCaller<__objectGetter, BaseObject> BaseRegCaller;
-
-#define REG_TYPE(__cb_func) \
-BaseObject* __cb_func(); \
-BaseRegCaller caller##__cb_func(#__cb_func, __cb_func); \
-BaseObject* __cb_func()
-
-template <typename T>
-T* SafeNew()
-{
-	T* ptr = nullptr;
-	try
-	{
-		ptr = new T;
-	}
-	catch (...)
-	{
-		///Do nothing for now ...
-	}
-	return ptr;
-}
+typedef CommSingleton<TypeFactory<BaseObject>> CObjectFactoty;

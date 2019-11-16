@@ -7,10 +7,11 @@
 #include "Character.h"
 #include "ActionController.h"
 #include "EventBase.h"
+#include "TestEvent.h"
 
 void testObjectManager()
 {
-	Logger::instance().redirect("haha.log");
+	//Logger::instance().redirect("haha.log");
 	ObjectManager& inst = CObjectManager::instance();
 	std::string id1 = inst.create("state");
 	RECORD_LOG("new object[%s]", id1.c_str());
@@ -37,6 +38,8 @@ void testAction()
 void testEvent()
 {
 	//Logger::instance().redirect("haha.log");
+	TestEvent* test = new TestEvent;
+	CEventLoop::instance().addEvent("test_event", 250);
 	CEventLoop::instance().exec();
 }
 

@@ -23,6 +23,8 @@
     <ClInclude Include="function\ActionController.h" />
     <ClInclude Include="tools\ObjectManager.h" />
     <ClInclude Include="include\EventBase.h" />
+    <ClInclude Include="tools\MDArray.h" />
+    <ClInclude Include="events\TestEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -38,6 +40,7 @@
     <ClCompile Include="function\ActionController.cpp" />
     <ClCompile Include="tools\ObjectManager.cpp" />
     <ClCompile Include="commsrc\EventBase.cpp" />
+    <ClCompile Include="events\TestEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

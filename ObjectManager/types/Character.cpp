@@ -18,9 +18,4 @@ void Character::init()
 	COMM_LOG("character");
 }
 
-REG_TYPE(chara)
-{
-	Character* object = SafeNew<Character>();
-	object->init();
-	return object;
-}
+REG_TYPE(Character, chara);

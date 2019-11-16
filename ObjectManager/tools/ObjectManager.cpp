@@ -20,7 +20,7 @@ ObjectManager::~ObjectManager()
 
 std::string ObjectManager::create(const std::string& name)
 {
-	BaseObject* object = BaseFactoty::instance().create(name);
+	BaseObject* object = CObjectFactoty::instance().create(name);
 	if (object == nullptr)
 	{
 		Logger::instance().log("create object faild");

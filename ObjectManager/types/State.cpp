@@ -89,9 +89,4 @@ void State::modpopulation(int num)
 	}
 }
 
-REG_TYPE(state)
-{
-	State* object = SafeNew<State>();
-	object->init();
-	return object;
-}
+REG_TYPE(State, state);

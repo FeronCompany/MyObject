@@ -12,18 +12,16 @@
 #include <map>
 #include "CommSingleton.h"
 
-
-template<class CbFunc, class BaseClass>
-class FormatFactory
+class TypeRegContainer
 {
-	friend CommSingleton<FormatFactory>;
+	friend CommSingleton<TypeRegContainer>;
 public:
-	BaseClass* create(const std::string& className)
+	void* create(const std::string& className)
 	{
 		auto iter = cbFuncMap.find(className);
 		if (iter != cbFuncMap.end())
 		{
-			return (iter->second)();
+			return iter->second;
 		}
 		else
 		{
@@ -31,24 +29,73 @@ public:
 		}
 	}
 
-	void join(const std::string& className, CbFunc __cb)
+	void join(const std::string& className, void* __cb)
 	{
 		cbFuncMap.insert(std::make_pair(className, __cb));
 	}
 
 private:
-	FormatFactory() {}
-	FormatFactory(FormatFactory& alFac) {}
+	TypeRegContainer() {}
+	TypeRegContainer(TypeRegContainer& alFac) {}
 
-	std::map<std::string, CbFunc> cbFuncMap;
+	std::map<std::string, void*> cbFuncMap;
+};
+typedef CommSingleton<TypeRegContainer> CTypeRegContainer;
+
+template<class BaseClass>
+class TypeFactory
+{
+	typedef BaseClass* (*CbFunc)();
+	friend CommSingleton<TypeFactory>;
+public:
+	BaseClass* create(const std::string& className)
+	{
+		void* funcPtr = CTypeRegContainer::instance().create(className);
+		if (funcPtr == nullptr)
+		{
+			return nullptr;
+		}
+		return static_cast<CbFunc>(funcPtr)();
+	}
+
+	void join(const std::string& className, CbFunc __cb)
+	{
+		CTypeRegContainer::instance().join(className, static_cast<void*>(__cb));
+	}
+
+private:
+	TypeFactory() {}
+	TypeFactory(TypeFactory& alFac) {}
 };
 
-template<class CbFunc, class BaseClass>
+template <typename T>
+T* SafeNew()
+{
+	T* ptr = nullptr;
+	try
+	{
+		ptr = new T;
+	}
+	catch (...)
+	{
+		///Do nothing for now ...
+	}
+	return ptr;
+}
+
+template<class BaseClass>
 class TypeRegCaller
 {
 public:
-	TypeRegCaller(const std::string& className, CbFunc __cb)
+	TypeRegCaller(const std::string& className)
 	{
-		CommSingleton<FormatFactory<CbFunc, BaseClass>>::instance().join(className, __cb);
+		CommSingleton<TypeFactory<BaseClass>>::instance().join(className, getInstance);
+	}
+
+	static BaseClass* getInstance()
+	{
+		return SafeNew<BaseClass>();
 	}
 };
+
+#define REG_TYPE(TypeName, __cb_func) TypeRegCaller<TypeName> caller##__cb_func(#__cb_func)

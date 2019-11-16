@@ -216,3 +216,9 @@ MyTime MyTime::parse(const char* szTimeStr, const char* szFormat)
 
 	return MyTime(t);
 }
+
+int64_t PreciseTime::getNowMiniSec()
+{
+	MicroClock timePoint = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now());
+	return timePoint.time_since_epoch().count();
+}

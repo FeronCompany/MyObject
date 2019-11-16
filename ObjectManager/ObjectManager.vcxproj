@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\vs_proj\MyObject\ObjectManager\function;G:\vs_proj\MyObject\ObjectManager\types;G:\vs_proj\MyObject\ObjectManager\tools;G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
+    <IncludePath>G:\vs_proj\MyObject\ObjectManager\events;G:\vs_proj\MyObject\ObjectManager\function;G:\vs_proj\MyObject\ObjectManager\types;G:\vs_proj\MyObject\ObjectManager\tools;G:\vs_proj\MyObject\ObjectManager\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="events\TestEvent.h" />
     <ClInclude Include="function\ActionController.h" />
     <ClInclude Include="include\EventBase.h" />
     <ClInclude Include="tools\ComposedLog.h" />
     <ClInclude Include="tools\CrudePointer.h" />
+    <ClInclude Include="tools\MDArray.h" />
     <ClInclude Include="tools\MyTime.h" />
     <ClInclude Include="tools\Trait.h" />
     <ClInclude Include="tools\Configure.h" />
@@ -149,6 +151,7 @@
     <ClCompile Include="commsrc\BaseLogger.cpp" />
     <ClCompile Include="commsrc\EventBase.cpp" />
     <ClCompile Include="commsrc\StrFormat.cpp" />
+    <ClCompile Include="events\TestEvent.cpp" />
     <ClCompile Include="function\ActionController.cpp" />
     <ClCompile Include="tools\MyTime.cpp" />
     <ClCompile Include="tools\Trait.cpp" />
