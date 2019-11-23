@@ -27,12 +27,13 @@ class ArgumentParser
 public:
 	void addDefaultArg(const COption& option);
 	void addDefaultArgs(COption* optionList, int size);
-	void parse(int argc, char** argv);
+	void parse(int argc, char** argv);	// May throw std::exception if argument not in format
 	std::map<std::string, std::string>& getArgValue();
 
 private:
 	bool checkShortName(const std::string& shortName, std::string& outName);
 	bool checkLongName(const std::string& fullName, std::string& outName);
+	void printErrorInfo();
 
 private:
 	std::map<std::string, COption> m_defaultArgs;

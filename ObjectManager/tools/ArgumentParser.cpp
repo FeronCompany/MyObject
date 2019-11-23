@@ -1,6 +1,7 @@
 
 
 #include "ArgumentParser.h"
+#include "ComposedLog.h"
 
 #include <iostream>
 #include <vector>
@@ -26,11 +27,13 @@ void ArgumentParser::parse(int argc, char** argv)
 	std::vector<std::string> commandStack;
 	for (int i = 1; i < argc; ++i)
 	{
-		std::cout << i << ":" << argv[i] << "\n";
+		//RECORD_LOG("[%d][%s]", i, argv[i]);
+		//std::cout << i << ":" << argv[i] << "\n";
 		std::string commandName;
 		if (checkLongName(argv[i], commandName) || checkShortName(argv[i], commandName))
 		{
-			std::cout << "command name:" << commandName << "\n";
+			//std::cout << "command name:" << commandName << "\n";
+			//RECORD_LOG("Command name[%s]", commandName.c_str());
 			// 确认是key时，确认其是否要跟value，如果明确不跟，直接跳过，否则放入commandStack
 			std::map<std::string, COption>::iterator itor = m_defaultArgs.find(commandName);
 			if (itor != m_defaultArgs.end() && itor->second.enArgType == EN_ARG_TYPE_NO_ARG)
@@ -43,6 +46,7 @@ void ArgumentParser::parse(int argc, char** argv)
 			}
 			else
 			{
+				printErrorInfo();
 				throw std::exception("more than one command in stack");
 			}
 		}
@@ -56,14 +60,20 @@ void ArgumentParser::parse(int argc, char** argv)
 			}
 			else
 			{
-				std::cout << argv[i] << " is not match with any command\n";
+				RECORD_LOG("[%s] is not match with any command.", argv[i]);
+				printErrorInfo();
+				throw std::exception("value is not match with any command");
+				//std::cout << argv[i] << " is not match with any command\n";
 			}
 		}
 	}
 
 	if (!commandStack.empty())
 	{
-		std::cout << "err command: " << commandStack.front() << "\n";
+		RECORD_LOG("error command [%s]", commandStack.front().c_str());
+		//std::cout << "err command: " << commandStack.front() << "\n";
+		printErrorInfo();
+		throw std::exception("error command");
 	}
 }
 
@@ -98,4 +108,33 @@ bool ArgumentParser::checkLongName(const std::string& fullName, std::string& out
 		return true;
 	}
 	return false;
+}
+
+void ArgumentParser::printErrorInfo()
+{
+	PURE_LOG("Please check your input parameters...");
+	PURE_LOG("Add arguments like this: --assert1 value1 --assert2 value2");
+
+	if (!m_defaultArgs.empty())
+	{
+		PURE_LOG("Here is some default arguments:");
+		for (auto& item : m_defaultArgs)
+		{
+			COption& option = item.second;
+			if (option.enArgType != EN_ARG_TYPE_NO_ARG)
+			{
+				PURE_LOG("\t--%s xxx [%s][%s]",
+					option.strLongArgName.c_str(),
+					option.strComments.c_str(),
+					option.strHelpMsg.c_str());
+			}
+			else
+			{
+				PURE_LOG("\t--%s [%s][%s]",
+					option.strLongArgName.c_str(),
+					option.strComments.c_str(),
+					option.strHelpMsg.c_str());
+			}
+		}
+	}
 }

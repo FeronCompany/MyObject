@@ -130,6 +130,7 @@
     <ClInclude Include="events\TestEvent.h" />
     <ClInclude Include="function\ActionController.h" />
     <ClInclude Include="include\EventBase.h" />
+    <ClInclude Include="tools\ArgumentParser.h" />
     <ClInclude Include="tools\ComposedLog.h" />
     <ClInclude Include="tools\CrudePointer.h" />
     <ClInclude Include="tools\MDArray.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="commsrc\StrFormat.cpp" />
     <ClCompile Include="events\TestEvent.cpp" />
     <ClCompile Include="function\ActionController.cpp" />
+    <ClCompile Include="tools\ArgumentParser.cpp" />
     <ClCompile Include="tools\MyTime.cpp" />
     <ClCompile Include="tools\Trait.cpp" />
     <ClCompile Include="tools\Configure.cpp" />
