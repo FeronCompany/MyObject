@@ -8,6 +8,9 @@
 #include "ActionController.h"
 #include "EventBase.h"
 #include "TestEvent.h"
+#include "ArgumentParser.h"
+
+#include <exception>
 
 void testObjectManager()
 {
@@ -38,16 +41,34 @@ void testAction()
 void testEvent()
 {
 	//Logger::instance().redirect("haha.log");
-	TestEvent* test = new TestEvent;
 	CEventLoop::instance().addEvent("test_event", 250);
 	CEventLoop::instance().exec();
 }
 
-int main()
+void testArgument(int argc, char** argv)
+{
+	ArgumentParser parser;
+	try
+	{
+		COption options[] = {
+			{"help", 'h', EN_ARG_TYPE_NO_ARG, "find help infomation", "follow no extra info"},
+			{"overwhelm", 'o', EN_ARG_TYPE_REQUIRE_ARG, "add extra attack to your actor", "follow with the attack value you want add"}
+		};
+		parser.addDefaultArgs(options, sizeof(options) / sizeof(options[0]));
+		parser.parse(argc, argv);
+	}
+	catch (std::exception& exp)
+	{
+		RECORD_LOG("%s", exp.what());
+	}
+}
+
+int main(int argc, char** argv)
 {
 	//testRegFunc();
 	//testObjectManager();
 	//testAction();
-	testEvent();
+	//testEvent();
+	testArgument(argc, argv);
 	return 0;
 }

@@ -25,6 +25,7 @@
     <ClInclude Include="include\EventBase.h" />
     <ClInclude Include="tools\MDArray.h" />
     <ClInclude Include="events\TestEvent.h" />
+    <ClInclude Include="tools\ArgumentParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -41,6 +42,7 @@
     <ClCompile Include="tools\ObjectManager.cpp" />
     <ClCompile Include="commsrc\EventBase.cpp" />
     <ClCompile Include="events\TestEvent.cpp" />
+    <ClCompile Include="tools\ArgumentParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />
