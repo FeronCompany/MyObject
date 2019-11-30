@@ -21,6 +21,7 @@ class BusiLogger
 	friend CommSingleton<BusiLogger>;
 public:
 	void log(const std::string& content);
+	void logAppend(const std::string& content);	// print log without '\n'
 	// log to designated file. to terminal if fileName is empty
 	void redirect(const std::string& fileName);
 

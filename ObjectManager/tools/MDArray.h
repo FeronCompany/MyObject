@@ -11,12 +11,12 @@ template<typename DATA>
 class TwoDArray
 {
 public:
-	TwoDArray(int32_t width, int32_t height)
+	TwoDArray(int32_t x, int32_t y)
 	{
-		mDataBuf = new DATA[width * height];
-		memset(mDataBuf, 0, width * height);
-		mHeight = height;
-		mWidth = width;
+		mDataBuf = new DATA[x * y];
+		memset(mDataBuf, 0, x * y);
+		mY = y;
+		mX = x;
 	}
 
 	~TwoDArray()
@@ -29,19 +29,31 @@ public:
 
 	DATA& operator()(int32_t x, int32_t y)
 	{
-		if (x > mWidth || y > mHeight)
+		if (x > mX || y > mY)
 		{
 			throw std::exception("over size!");
 		}
-		return mDataBuf[mWidth * y + x];
+		return mDataBuf[mX * y + x];
+	}
+
+	void resize(int32_t x, int32_t y)
+	{
+		if (mDataBuf)
+		{
+			delete[] mDataBuf;
+		}
+		mDataBuf = new DATA[x * y];
+		memset(mDataBuf, 0, x * y);
+		mY = y;
+		mX = x;
 	}
 
 private:
 
 private:
-	DATA*	mDataBuf;
-	int32_t	mHeight;
-	int32_t	mWidth;
+	DATA* mDataBuf;
+	int32_t	mY;
+	int32_t	mX;
 };
 
 // 3D Array
@@ -49,13 +61,13 @@ template<typename DATA>
 class ThreeDArray
 {
 public:
-	ThreeDArray(int32_t width, int32_t height, int32_t length)
+	ThreeDArray(int32_t x, int32_t y, int32_t z)
 	{
-		mDataBuf = new DATA[width * height * length];
-		memset(mDataBuf, 0, width * height * length);
-		mHeight = height;
-		mWidth = width;
-		mLength = length;
+		mDataBuf = new DATA[x * y * z];
+		memset(mDataBuf, 0, x * y * z);
+		mY = y;
+		mX = x;
+		mZ = z;
 	}
 
 	~ThreeDArray()
@@ -68,18 +80,32 @@ public:
 
 	DATA& operator()(int32_t x, int32_t y, int32_t z)
 	{
-		if (x > mWidth || y > mHeight || z > mLength)
+		if (x > mX || y > mY || z > mZ)
 		{
 			throw std::exception("over size!");
 		}
-		return mDataBuf[mWidth * mHeight * z + mWidth * y + x];
+		return mDataBuf[mX * mY * z + mX * y + x];
+	}
+
+	void resize(int32_t x, int32_t y, int32_t z)
+	{
+		if (mDataBuf)
+		{
+			delete[] mDataBuf;
+		}
+		mDataBuf = new DATA[x * y * z];
+		memset(mDataBuf, 0, x * y * z);
+		mY = y;
+		mX = x;
+		mZ = z;
 	}
 
 private:
 
 private:
 	DATA* mDataBuf;
-	int32_t	mHeight;
-	int32_t	mWidth;
-	int32_t	mLength;
+	int32_t	mY;
+	int32_t	mX;
+	int32_t	mZ;
 };
+

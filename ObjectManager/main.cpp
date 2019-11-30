@@ -9,6 +9,7 @@
 #include "EventBase.h"
 #include "TestEvent.h"
 #include "ArgumentParser.h"
+#include "PathFinder.h"
 
 #include <exception>
 
@@ -63,12 +64,59 @@ void testArgument(int argc, char** argv)
 	}
 }
 
+void testPathFinder()
+{
+	PathFinder pathFinder;
+	pathFinder.setMapSize(10, 10);
+	TwoDArray<PositionNode>& myMap = pathFinder.getMap();
+	myMap(2, 2).access = 0;
+	myMap(2, 3).access = 0;
+	myMap(2, 4).access = 0;
+	myMap(2, 5).access = 0;
+	myMap(2, 6).access = 0;
+	myMap(2, 7).access = 0;
+	myMap(3, 4).access = 0;
+	myMap(4, 4).access = 0;
+	myMap(5, 4).access = 0;
+	myMap(6, 4).access = 0;
+	myMap(5, 1).access = 0;
+	myMap(5, 2).access = 0;
+	myMap(5, 3).access = 0;
+	myMap(6, 5).access = 0;
+	myMap(7, 5).access = 0;
+	myMap(8, 5).access = 0;
+	myMap(6, 6).access = 0;
+	myMap(6, 7).access = 0;
+	myMap(5, 7).access = 0;
+
+	pathFinder.setStartPos(1, 1);
+	pathFinder.setTargetPos(5, 5);
+	std::vector<PositionNode> nodeMap;
+	pathFinder.getPath(nodeMap);
+	for (auto& node : nodeMap)
+	{
+		PURE_LOG("%d, %d", node.pos.x, node.pos.y);
+	}
+}
+/*
+1 1 1 1 1 1 1 1 1 1
+1 6 1 1 1 0 1 1 1 1
+1 1 0 1 1 0 1 1 1 1
+1 1 0 1 1 0 1 1 1 1
+1 1 0 0 0 0 0 1 1 1
+1 1 0 1 1 6 0 0 0 1
+1 1 0 1 1 1 0 1 1 1
+1 1 0 1 1 0 0 1 1 1
+1 1 1 1 1 1 1 1 1 1
+1 1 1 1 1 1 1 1 1 1
+*/
 int main(int argc, char** argv)
 {
 	//testRegFunc();
 	//testObjectManager();
 	//testAction();
 	//testEvent();
-	testArgument(argc, argv);
+	//testArgument(argc, argv);
+	testPathFinder();
 	return 0;
 }

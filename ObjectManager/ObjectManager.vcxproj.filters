@@ -26,6 +26,7 @@
     <ClInclude Include="tools\MDArray.h" />
     <ClInclude Include="events\TestEvent.h" />
     <ClInclude Include="tools\ArgumentParser.h" />
+    <ClInclude Include="algo_utils\PathFinder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -43,6 +44,7 @@
     <ClCompile Include="commsrc\EventBase.cpp" />
     <ClCompile Include="events\TestEvent.cpp" />
     <ClCompile Include="tools\ArgumentParser.cpp" />
+    <ClCompile Include="algo_utils\PathFinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt" />

@@ -13,3 +13,7 @@
 #define PURE_LOG(fmt, ...) do { \
 		Logger::instance().log(ObjectTools::FormatString(fmt, ##__VA_ARGS__)); \
 	} while(0)
+
+#define APPEND_LOG(fmt, ...) do { \
+		Logger::instance().logAppend(ObjectTools::FormatString(fmt, ##__VA_ARGS__)); \
+	} while(0)
