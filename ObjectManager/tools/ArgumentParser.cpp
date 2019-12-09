@@ -86,7 +86,7 @@ bool ArgumentParser::checkShortName(const std::string& shortName, std::string& o
 {
 	if (shortName.size() == 2 && shortName.at(0) == '-')
 	{
-		std::map<char, std::string>::iterator itor = m_shortIndex.find(shortName.at(0));
+		std::map<char, std::string>::iterator itor = m_shortIndex.find(shortName.at(1));
 		if (itor == m_shortIndex.end())
 		{
 			return false;
